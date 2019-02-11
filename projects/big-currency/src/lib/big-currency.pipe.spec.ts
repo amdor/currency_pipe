@@ -50,6 +50,11 @@ describe('BigCurrencyPipe', () => {
   it('should return correct value for big numbers', () => {
     expect(pipe.transform('123456789012345678.90')).toEqual('$123,456,789,012,345,678.90');
     expect(pipe.transform(Big(123))).toEqual('$123.00');
+    expect(pipe.transform(Big('123.500'))).toEqual('$123.50');
+    expect(pipe.transform(Big('123000'))).toEqual('$123,000');
+    const big = Big('123.500');
+    pipe.transform(big);
+    expect(big).toEqual(Big('123.500'));
   });
 
 });

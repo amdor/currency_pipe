@@ -8,9 +8,9 @@
 
 import {Inject, LOCALE_ID, Pipe, PipeTransform} from '@angular/core';
 import {formatCurrency} from './i18n/format_number';
-import {getCurrencySymbol} from './i18n/locale_data_api';
 import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
 import Big from 'big.js';
+import {getCurrencySymbol} from '@angular/common';
 
 /**
  * @ngModule BigCurrencyPipeModule

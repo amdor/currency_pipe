@@ -12,7 +12,7 @@ import {
   getLocaleNumberFormat,
   getLocaleNumberSymbol,
   getNumberOfCurrencyDigits
-} from './locale_data_api';
+} from '@angular/common';
 import Big from 'big.js';
 
 export const NUMBER_FORMAT_REGEXP = /^(\d+)?\.((\d+)(-(\d+))?)?$/;
@@ -69,9 +69,14 @@ function formatNumberToLocaleString(
   parsedNumber = roundNumber(parsedNumber, minFraction, maxFraction);
 
   let digits = parsedNumber.c;
-  let integerLen = parsedNumber.round(0, DOWN).c.length;
+  let integerLen = parsedNumber.e + 1;
   let decimals = [];
   isZero = digits.every(d => !d);
+
+  // pad zeros for numbers with zeros at the end
+  for (; digits.length < integerLen;) {
+    digits.push(0);
+  }
 
   // pad zeros for small numbers
   for (; integerLen < minInt; integerLen++) {
@@ -248,13 +253,13 @@ function roundNumber(parsedNumber: Big, minFrac: number, maxFrac: number): Big {
       `The minimum number of digits after fraction (${minFrac}) is higher than the maximum (${maxFrac}).`);
   }
   const digits = parsedNumber.c;
-  const parsedIntegerLength = parsedNumber.round(0, DOWN).c.length;
+  const parsedIntegerLength = parsedNumber.e + 1;
   const fractionLen = digits.length - parsedIntegerLength;
   const desiredFractionSize = Math.min(Math.max(minFrac, fractionLen), maxFrac);
   const retNumber: Big = parsedNumber.round(desiredFractionSize, HALF_UP);
 
   const intLength = retNumber.round(0, DOWN).c.length;
-  let zerosToAdd = desiredFractionSize - (retNumber.c.length - intLength)
+  let zerosToAdd = desiredFractionSize - (retNumber.c.length - intLength);
   if (zerosToAdd > 0) {
     for (; zerosToAdd > 0; zerosToAdd--) {
       retNumber.c.push(0);
