@@ -1,7 +1,7 @@
 {
   "name": "bignumber-currency",
   "description": "An Angular pipe for handling currencies with big numbers. Derived from Angular currency pipe.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "big",
     "number",
