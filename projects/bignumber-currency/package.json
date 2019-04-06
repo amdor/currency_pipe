@@ -1,8 +1,27 @@
 {
   "name": "bignumber-currency",
+  "description": "An Angular pipe for handling currencies with big numbers. Derived from Angular currency pipe.",
   "version": "0.0.1",
+  "keywords": [
+    "big",
+    "number",
+    "angular",
+    "pipe",
+    "library",
+    "currency"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amdor/currency_pipe/tree/master/projects/bignumber-currency"
+  },
+  "author": {
+    "name": "Zsolt Deák",
+    "email": "lordmairtis@gmail.com"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
+    "@angular/core": "^7.2.0",
+    "bignumber.js": "^8.1.1"
   }
 }
