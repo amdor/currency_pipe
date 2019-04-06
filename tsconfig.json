@@ -24,6 +24,12 @@
       ],
       "big-currency/*": [
         "dist/big-currency/*"
+      ],
+      "bignumber-currency": [
+        "dist/bignumber-currency"
+      ],
+      "bignumber-currency/*": [
+        "dist/bignumber-currency/*"
       ]
     }
   }
